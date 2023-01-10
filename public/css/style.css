@@ -1,3 +1,7 @@
+header{
+    padding-top: 15px;
+}
+
 body
 {
     background-color: #B9D8C2; 
@@ -37,10 +41,19 @@ footer{
     margin-bottom: 10px;
 }
 
-.top-text
+#top-text
 {
-    text-align: center;
-    margin-top: 20px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+#top-btn{
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+#top-text, #top-btn{
+    display: inline;
 }
 
 .input-group
@@ -99,7 +112,17 @@ footer{
     text-align: left;
 }
 
+footer{
+    text-align: center;
+}
+
 #logout-btn{
     position: absolute;
     left: 50%;
+}
+
+#darkmodeButton{
+    margin: 0;
+    position: absolute;
+    left: 40%;
 }

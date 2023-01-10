@@ -51,6 +51,10 @@ app.get('/register', (req, res) => {
     res.render('register.ejs');
 })
 
+app.get('/user.ejs', (req, res) => {
+    res.render('user.ejs');
+})
+
 // POST LOGIN FOR AUTENTHICATION
 app.post('/login', async  function (req, res)  { 
     console.log( "Invio:" + req.body.email);

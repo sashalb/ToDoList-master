@@ -41,13 +41,31 @@ addTodo.addEventListener('click', function(){
     }
 });
 
-//pressing Enter key to add an item - non funzionaaaa
 addTodo.addEventListener('keypress', function(event){
+    let txtTodo = document.getElementById('txt-todo-name');
+    let todoName = txtTodo.value;
+
+    if(event.key === "Enter"){
+        event.preventDefault();
+        document.getElementById("add-item").click();
+        if(todoName != ""){                         //if I input text: todoName goes into my "items" array
+            items.push(todoName);       
+            txtTodo.value = "";
+            console.log("Item added!");
+            loadList();
+        }else{                                      //if I input no text: alert
+            alert("You must provide an item!");
+        }
+    }
+});
+
+//pressing Enter key to add an item - non funzionaaaa
+/*addTodo.addEventListener('keypress', function(event){
     if(event.key === "Enter"){
         event.preventDefault();
         document.getElementById("add-item").click();
     }
-});
+});*/
 
 //darkmode script
 function darkMode()
