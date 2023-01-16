@@ -40,7 +40,7 @@ user personal area:
 
         <div class="top-container">
          
-            <h1><%= messages.username %>'s Personal Area</h1>
+            <h1><%= messages.username %>'s TDLs</h1>
             <!--
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Write something..." aria-describedby="button-addon2" id="txt-todo-name">
@@ -61,9 +61,11 @@ user personal area:
                 </p>
             </div>
             <form id="logout-btn" action="/logout?_method=DELETE" method="POST">
-                <button type="submit">Log Out</button>
+                <input type="submit" value="Log Out">
             </form>
-            <button id="darkmodeButton" type="button" onclick="darkMode()">Dark/Light</button>
+            <form id="darkmodeButton" onclick="darkMode()">
+                <input type="button" value="Dark/Light">
+            </form>
         </footer>
 
         

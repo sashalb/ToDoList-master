@@ -2,6 +2,45 @@ header{
     padding-top: 15px;
 }
 
+/*------------------------------------------------------------*/
+/*.dropbtn{
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;	
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    }*/
+
+.dropdown {
+	margin-right: 10px;
+	float: right;
+    position: relative;
+    font-size: small;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 5px 5px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+/*------------------------------------------------------------*/
+
 body
 {
     background-color: #B9D8C2; 
@@ -12,11 +51,6 @@ h1
 {
     text-align: center;
     margin-top: 50px;
-}
-
-footer{
-    text-align: center;
-    padding-top: 20px;
 }
 
 .form-box{
@@ -43,13 +77,13 @@ footer{
 
 #top-text
 {
-    margin-left: 15px;
-    margin-top: 15px;
+    position: absolute;
+    left: 15px;
 }
 
 #top-btn{
-    margin-right: 15px;
-    margin-top: 15px;
+    position: absolute;
+    right: 15px;
 }
 
 #top-text, #top-btn{
@@ -58,7 +92,7 @@ footer{
 
 .input-group
 {
-    margin-top: 50px;
+    margin-top: 40px;
     padding-left: 100px;
     padding-right: 100px;
     border-color: #4A5043;
@@ -114,15 +148,21 @@ footer{
 
 footer{
     text-align: center;
+    padding-top: 20px;
+}
+
+#bottom-fact{
+    font-size: small;
+    margin-bottom: 30px;
 }
 
 #logout-btn{
     position: absolute;
-    left: 50%;
+    right: 50%;
 }
 
 #darkmodeButton{
     margin: 0;
     position: absolute;
-    left: 40%;
+    left: 50%;
 }
