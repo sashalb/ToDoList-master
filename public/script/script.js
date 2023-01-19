@@ -1,5 +1,6 @@
 var items = [];      //item holder
 var listHolder = document.getElementById('list-holder');        //list holder
+var addTodo = document.getElementById('add-item');          //add item button
 
 //adding a loadList function to populate my to do list
 loadList = function()
@@ -25,28 +26,28 @@ loadList = function()
     });
 }
 
-//add items to the TDL
-var addTodo = document.getElementById('add-item');          //add item button
-var txtInput = document.getElementById("txt-input");        //text input field
-
+//adding an event listener when clicking on Add Item button
 addTodo.addEventListener('click', function(){
-    let inputName = txtInput.value;                             //considering the value of text input
+    let txtTodo = document.getElementById('txt-todo-name');     //getting the text input
+    let todoName = txtTodo.value;                               //considering the value of text input
 
-    if(inputName != ""){                         //if I input text: todoName goes into my "items" array
-        items.push(inputName);       
-        txtInput.value = "";
+    if(todoName != ""){                         //if I input text: todoName goes into my "items" array
+        items.push(todoName);       
+        txtTodo.value = "";
+        console.log("Item added!");
         loadList();
     }else{                                      //if I input no text: alert
         alert("You must provide an item!");
     }
 });
 
-txtInput.addEventListener("keypress", function(event){
+//pressing Enter key to add an item - non funzionaaaa
+addTodo.addEventListener('keypress', function(event){
     if(event.key === "Enter"){
         event.preventDefault();
-        addTodo.click();
+        document.getElementById("add-item").click();
     }
-})
+});
 
 //darkmode script
 function darkMode()
@@ -58,6 +59,9 @@ function darkMode()
     var element2 = document.body.li;
     element2.classList.toggle("darkmode");
 }
+
+
+
 
 function GetRandomItem()
 {

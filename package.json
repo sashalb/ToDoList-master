@@ -1,7 +1,7 @@
 {
-  "name": "todolist-master",
+  "name": "todolist-main",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple ToDoList project with HTML5, CSS, JS (API calls, NodeJS, AJAX)",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
@@ -18,7 +18,7 @@
     "express-session": "^1.17.3",
     "html": "^1.0.0",
     "method-override": "^3.0.0",
-    "mongoose": "^6.8.3",
+    "mongoose": "^6.8.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "request": "^2.88.2",
