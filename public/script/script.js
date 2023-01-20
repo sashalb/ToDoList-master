@@ -1,6 +1,8 @@
 var items = [];      //item holder
 var listHolder = document.getElementById('list-holder');        //list holder
 
+console.log("Ciao");
+
 //adding a loadList function to populate my to do list
 loadList = function()
 {
