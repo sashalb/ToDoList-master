@@ -167,7 +167,11 @@ app.post('/deletelists',async function(req, res, next){
 
         const rtn1 =  await dbcontext.GetUserLists(req.session.iduser);
         console.log(rtn1);
-        req.flash('allRows', rtn1);
+        if (rtn1.length > 0)
+             req.flash('allRows', rtn1);
+        else
+        req.flash('allRows', null);
+       
         res.render('lists.ejs');
   
 });
