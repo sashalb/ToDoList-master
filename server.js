@@ -157,7 +157,7 @@ app.post('/createlists',async function(req, res, next){
 
 // POST FUNCTION TO DELETE AN USER TODO LIST
 app.post('/deletelists',async function(req, res, next){
-    console.log("entro");
+    console.log("entro delete");
     var IdItem = req.body.IdItem;
    
   
@@ -170,7 +170,7 @@ app.post('/deletelists',async function(req, res, next){
         if (rtn1.length > 0)
              req.flash('allRows', rtn1);
         else
-        req.flash('allRows', null);
+            req.flash('allRows', null);
        
         res.render('lists.ejs');
   
