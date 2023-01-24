@@ -50,20 +50,20 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
-                <a class="nav-item nav-link "  href="/index">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link"  href="/index">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="#">Profile</a>
                 <a class="nav-item nav-link active" href="/lists">My Lists</a>
+                <a class="nav-item nav-link" onclick="darkMode()">Dark/Light</a>
                 <form id="logout-btn" action="/logout?_method=DELETE" method="POST">
                     <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent;cursor:pointer" >Logout</button>
                 </form>
-             
               </div>
             </div>
           </nav>
         <header>
             <div class="top-text">
                 <a>Your saved to do Lists</a><br>
-                <button type="button"  data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary">Create</button>
+                <!--<button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="create">Create</button>-->
             </div>
         </header>
 
@@ -94,39 +94,43 @@
                     <% }
                 } 
                 %>
-              </table>
-              
-              
-           
+            </table>
+            <!--<button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="create">Create a New List</button>-->
+            <form action="/index" id="create">
+              <input type="submit" value="Create a new list">
+          </form>
         </div>
-        <form class="credentials" action="/createlists" method="POST">
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New To Do List</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Description:</label>
-                    <input type="text" class="form-control" id="description" name="description" required>
-                  </div>
-                  
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+        <!--
+        <form class="credentials" action="/createlists" method="POST">
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">New To Do List</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Description:</label>
+                      <input type="text" class="form-control" id="description" name="description" required>
+                    </div>
+                    
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        </form>
+          </form>
+        -->
+
         <footer>
            
         </footer>
@@ -135,7 +139,7 @@
     </body>
     
 
-
+    <script src="script/script.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
     <script>

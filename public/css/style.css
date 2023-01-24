@@ -1,18 +1,11 @@
-body
-{
-    background-color: #B9D8C2; 
-    color: #4A5043;        
+body{
+    background-color: #E9C46A; 
+    color: #264653;        
 }
 
-h1
-{
+h1{
     text-align: center;
     margin-top: 50px;
-}
-
-footer{
-    text-align: center;
-    padding-top: 20px;
 }
 
 .form-box{
@@ -22,7 +15,7 @@ footer{
     margin-right: 15%;
     border-top-width: 1px;
     border-top-style: solid;
-    border-color: #4A5043;
+    border-color: #264653;
     border-bottom-width: 1px;
     border-bottom-style: solid;
     padding-top: 10px;
@@ -43,64 +36,58 @@ footer{
 .col-md-5{
     text-align: left!important;
 }
-.top-text
-{
+
+.top-text{
     text-align: left;
-    margin-top: 20px;
+    margin-top: 50px;
     margin-left: 20px;
 }
-.top-container
-{
-    
+
+.top-container{
     margin-right: 20px;
     margin-left: 20px;
 }
-.input-group
-{
+
+.input-group{
     margin-top: 50px;
     padding-left: 100px;
     padding-right: 100px;
-    border-color: #4A5043;
+    border-color: #264653;
 }
 
-.form-control
-{
-    border-color: #8AA1B1;    
+.form-control{
+    border-color: #264653;    
 }
 
-.btn
-{
-    background-color: #8AA1B1;     
+.btn{
+    background-color: #2A9D8F;     
     color: white;
+    border-color: #264653;  
 }
 
-.list-group-item
-{
+#create{
+    margin-top: 20px;
+    text-align: center;
+}
+
+#save{
+    position: relative;
+}
+
+.list-group-item{
     cursor: pointer;
-    background-color: #B9D8C2;  
-    color: #4A5043;            
+    background-color: #E9C46A;  
+    color: #264653;            
 }
 
-.darkmodeButton
-{
-    border-style: solid;
-    border-radius: 5px;
-    border-width: 1px;
-    border-color: #4A5043;
-    position: absolute;
-    right: 5%;
-}
-
-.done
-{
+.done{
     text-decoration: line-through;
     color: grey;
 }
 
-.darkmode       /*inverting background and text colors*/
-{
-    background-color: #4A5043;  
-    color: #B9D8C2
+.darkmode{
+    background-color: #264653;  
+    color: #E9C46A;
 }
 
 .listholderstyle{
@@ -110,8 +97,13 @@ footer{
     margin-top: 20px;
     text-align: left;
 }
-
+/*
 #logout-btn{
     position: absolute;
     left: 50%;
+}*/
+
+footer{
+    text-align: center;
+    padding-top: 20px;
 }
