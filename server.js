@@ -1,5 +1,3 @@
-//setup of express application
-
 //environment variables
 if(process.env.NODE_ENV !== 'production'){
     require('dotenv').config();
@@ -45,16 +43,45 @@ app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
 
 //routing setup for the application
-app.get('/index', (req, res) => {
+app.get('/index', async  function  (req, res)  {
     if(req.session.user !=null || req.session.user !=undefined)
+    {
+        console.log("app.locals.listindex:" + app.locals.listindex);
+        if(app.locals.listindex!=undefined)
+        {
+            const rtn =  await dbcontext.GetUserListsItems(app.locals.listindex);
+            console.log(rtn);
+            if (rtn.length > 0)
+                req.flash('allRowsItems', rtn);
+            else
+                req.flash('allRowsItems', null);
+    
+        }
+       
+
         res.render('index.ejs');
+    }
+       
     else
         res.render('login.ejs');
 })
-app.get('/', (req, res) => {
+app.get('/', async function (req, res)  {
     if(req.session.user !=null || req.session.user !=undefined)
+    {
+        console.log("app.locals.listindex:" + app.locals.listindex);
+        if(app.locals.listindex!=undefined)
+        {
+            const rtn =  await dbcontext.GetUserListsItems(app.locals.listindex);
+            console.log(rtn);
+            if (rtn.length > 0)
+                req.flash('allRowsItems', rtn);
+            else
+                req.flash('allRowsItems', null);
 
+        }
         res.render('lists.ejs');
+    }
+        
     else
         res.render('login.ejs');
 })
@@ -146,12 +173,19 @@ app.post('/createlists',async function(req, res, next){
     {
         console.log(description);
         console.log(idUser);
-        const rtn =  await dbcontext.InsertUserList(description,idUser);
-        console.log(rtn);
-        const rtn1 =  await dbcontext.GetUserLists(req.session.iduser);
-        console.log(rtn1);
-        req.flash('allRows', rtn1);
-        res.render('lists.ejs');
+        const lastindex =  await dbcontext.InsertUserList(description,idUser);
+        if(lastindex!=-1)
+        {
+            console.log(lastindex);
+            // const rtn1 =  await dbcontext.GetUserLists(req.session.iduser);
+            // console.log(rtn1);
+            app.locals.listindex = lastindex;
+            app.locals.descriptionList = description;
+
+            // req.flash('allRows', rtn1);
+            res.render('index.ejs');
+        }
+        
     }
 });
 
@@ -175,9 +209,42 @@ app.post('/deletelists',async function(req, res, next){
         res.render('lists.ejs');
   
 });
+// POST FUNCTION TO DELETE AN USER TODO LIST
+app.post('/openlists',async function(req, res, next){
+    console.log("entro openlists");
+    var IdItem = req.body.IdItem;
+    var NomeLista = req.body.Nome;
+  
+    app.locals.listindex = IdItem;
+    app.locals.descriptionList = NomeLista;
+
+    console.log(app.locals.listindex);
+    console.log(app.locals.descriptionList);
+    res.render('index.ejs');
+  
+});
+
+// POST FUNCTION TO DELETE AN USER TODO LIST
+app.post('/insertitemlist',async function(req, res, next){
+    console.log("entro insertitemlist");
+      var description = req.body.description;
+      var listId = req.body.listId;
+  
+        console.log(description);
+       
+
+         const rtn1 =  await dbcontext.InsertItemUserList(description,listId);
+         console.log(rtn1);
+       
+        app.locals.listindex = listId;
 
 
+        console.log(app.locals.listindex);
+    
 
+        res.render('index.ejs');
+  
+});
 
 //LOGOUT
 app.delete('/logout', function(req, res, next){

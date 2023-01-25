@@ -1,7 +1,8 @@
 var items = [];      //item holder
 var listHolder = document.getElementById('list-holder');        //list holder
 
-console.log("Ciao");
+
+
 
 //adding a loadList function to populate my to do list
 loadList = function()
@@ -27,6 +28,9 @@ loadList = function()
     });
 }
 
+
+
+
 //adding an event listener when clicking on Add Item button
 var addTodo = document.getElementById('add-item');          //add item button
 var txtInput = document.getElementById("txt-input");        //text input field
@@ -51,6 +55,9 @@ txtInput.addEventListener('keypress', function(event){
         addTodo.click();
     }
 });
+
+
+
 
 //darkmode script
 function darkMode()

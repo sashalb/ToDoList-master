@@ -133,11 +133,58 @@ async function GetUserLists(iduser){
     });
 }
 
+
+async function GetUserListsItems(idlist){
+    return new Promise(function(resolve,reject){
+        let sql = 'SELECT * FROM Tb_ToDoList_Items WHERE IdToDoLists = ' + idlist ;
+        db.all(sql,[], async function(err, rows) {
+            if(err){return console.log(err); reject(err);}
+           
+            resolve(rows);
+           
+           
+         });
+    });
+}
+
 // THIS FUNCTION CREATE A NEW USER LIST
 async function InsertUserList(description,iduser){
     return new Promise(function(resolve,reject){
         let sql = 'INSERT INTO  Tb_ToDoLists (Nome,IdUser) VALUES (?,?)' ;
         db.run(sql,[description,iduser], async function(err, rows) {
+            if(err)
+            {
+                
+                reject(-1);
+            }
+            else
+            {
+                let sql1 = 'select last_insert_rowid() ' ;
+                db.run(sql1,[], async function(err, lastindex) {
+                    if(err)
+                    {
+                        return console.log(err); 
+                        reject(-1);
+                    }
+                    else
+                    {
+                        resolve(lastindex);
+                    }
+                   
+                   
+                 });
+            }
+           
+           
+         });
+    });
+}
+
+// THIS FUNCTION CREATE A NEW ITEM IN LIST
+async function InsertItemUserList(description,idlist){
+    return new Promise(function(resolve,reject){
+        let sql = 'INSERT INTO  Tb_ToDoList_Items (IdToDoLists,Descrizione,Position) VALUES (?,?,?)' ;
+        db.run(sql,[idlist,description,0], async function(err, rows) {
             if(err)
             {
                 return console.log(err); 
@@ -150,6 +197,7 @@ async function InsertUserList(description,iduser){
          });
     });
 }
+
 
 // THIS FUNCTION CREATE A NEW USER LIST
 async function DeleteUserList (iditem){
@@ -184,6 +232,8 @@ module.exports.doRegister = doRegister;
 module.exports.GetUserLists = GetUserLists;
 module.exports.InsertUserList = InsertUserList;
 module.exports.DeleteUserList = DeleteUserList;
+module.exports.InsertItemUserList = InsertItemUserList;
+module.exports.GetUserListsItems = GetUserListsItems;
 
 
 

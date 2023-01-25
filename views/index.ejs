@@ -21,9 +21,9 @@
         <link href="css/style.css" rel="stylesheet" type="text/css">
     </head>
     <script>
-        $(document).ready(function() { 
-                  GetRandomItem();
-               });
+        // $(document).ready(function() { 
+        //           GetRandomItem();
+        //        });
     </script>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -48,21 +48,51 @@
           </nav>
         <header>
             <div class="top-text">
+                <a><%= descriptionList %></a>
                 <a>Need to remember something? Write it down here!</a><br>
             </div>
         </header>
 
         <div class="top-container">
+          <form  action="/insertitemlist" method="POST">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Write something..." aria-describedby="button-addon2" id="txt-input">
+                <input type="text" class="form-control" placeholder="Write something..." aria-describedby="button-addon2" id="description" name="description">
+                <input type="hidden" class="form-control"id="listId" name="listId" value=<%= listindex %>>
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="add-item">Add Item</button>
+                    <button class="btn btn-outline-secondary" type="submit" id="add-item">Add Item</button>
                 </div>
+                
             </div>
+          </form>
+            <button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" style="margin-left: 100px;margin-top: 3px;" id="save">Save List</button>
             <div class="listholderstyle">
                 <ul class="list-group list-group-flush" id="list-holder"></ul>
             </div>
-            <button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="save">Save List</button>
+            <table id="listsTable" data-paging="false" class="table">
+              <thead  class="thead-dark">
+                <tr>
+                 
+                  <th scope="col">Description</th>
+             
+                </tr>
+              </thead>
+              <%
+              if(messages.allRowsItems!=null)
+              {
+                for(let row of messages.allRowsItems ){%>
+                 
+                  
+                  <tbody>
+                      <tr style="cursor: pointer;">
+                          <td><%= row.Descrizione %></td>
+                          
+                      </tr>
+                  </tbody>
+                  <% }
+              } 
+              %>
+          </table>
+           
         </div>
 
         <!------------------------------------------------------------------------------------------------>
@@ -107,6 +137,6 @@
         </footer>
 
         
-    </body>
-    <script src="script/script.js"></script>
+      </body>
+    <!--<script src="script/script.js"></script>-->
 </html>
