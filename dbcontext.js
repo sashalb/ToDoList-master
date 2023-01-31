@@ -10,7 +10,7 @@ console.log('Connected to the todolist  db.');
 });
 
 // THIS ENTITY USED TO CREATE A LOGGEDUSER ENTITY
-let LoggedUser =class {
+let LoggedUser = class {
     constructor(id,username, email,password) {
         this.id = id;
         this.username = username;
@@ -234,6 +234,3 @@ module.exports.InsertUserList = InsertUserList;
 module.exports.DeleteUserList = DeleteUserList;
 module.exports.InsertItemUserList = InsertItemUserList;
 module.exports.GetUserListsItems = GetUserListsItems;
-
-
-

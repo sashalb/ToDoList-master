@@ -34,9 +34,9 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="/index">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Profile</a>
+                <a class="nav-item nav-link" href="/profile">Profile</a>
                 <a class="nav-item nav-link" href="/lists">My Lists</a>
-                <a class="nav-item nav-link" onclick="darkMode()">Dark/Light</a>
+                <!-- <a class="nav-item nav-link" onclick="darkMode()">Dark/Light</a> -->
                 <form id="logout-btn" action="/logout?_method=DELETE" method="POST">
                     <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent;cursor:pointer" >Logout</button>
                 </form>
@@ -48,12 +48,12 @@
           </nav>
         <header>
             <div class="top-text">
-                <a><%= descriptionList %></a>
                 <a>Need to remember something? Write it down here!</a><br>
             </div>
         </header>
 
         <div class="top-container">
+          <h3>Current list: <%= descriptionList %></h3>
           <form  action="/insertitemlist" method="POST">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Write something..." aria-describedby="button-addon2" id="description" name="description">
@@ -128,7 +128,7 @@
         <footer>
             <div id="bottom-fact">
                 <p>
-                    Random fact: <span id="fact"></span>
+                    Did you know?<span id="fact"></span>
                 </p>
             </div>
             <!-- <form id="logout-btn" action="/logout?_method=DELETE" method="POST">

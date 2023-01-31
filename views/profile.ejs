@@ -19,56 +19,6 @@
         <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet" type="text/css">
         
         <link href="css/style.css" rel="stylesheet" type="text/css">
-        <script type="text/javascript">
-           function DeleteItem(id)
-            {
-                if (confirm("Are you sure?"))
-                {
-                  $.ajax({
-                      type: 'post',
-                      url: '/deletelists',
-                      data: { 
-                          'IdItem': id
-                      },
-                      success: function (data) {
-                        window.location.href = "/lists";
-                      }
-                  })
-                }
-              
-            }
-
-            function OpenList(id,Nome)
-            {
-                  $.ajax({
-                      type: 'post',
-                      url: '/openlists',
-                      data: { 
-                          'IdItem': id,
-                          'Nome':Nome
-                      },
-                      success: function (data) {
-                        window.location.href = "/index";
-                      }
-                  }) 
-            }
-
-            function LogOut(){
-                if (confirm("Log out from this account?"))
-                {
-                    $.ajax({
-                      type: 'post',
-                      url: '/logout',
-                      action: '/logout?_method=DELETE',
-                      method: 'POST',
-
-                      success: function(){
-                        window.location.href = "/login";
-                      }
-                    })
-                }
-            }
-        </script>
     </head>
    
     <body>
@@ -80,25 +30,27 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
                 <a class="nav-item nav-link"  href="/index">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="/profile">Profile</a>
+                <a class="nav-item nav-link" href="#">Profile</a>
                 <a class="nav-item nav-link active" href="/lists">My Lists</a>
                 <!-- <a class="nav-item nav-link" onclick="darkMode()">Dark/Light</a> -->
-                <!-- <form id="logout-btn" action="/logout?_method=DELETE" method="POST"> -->
-                <form id="logout-btn">
-                    <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent;cursor:pointer" onclick="LogOut()">Logout</button>
+                <form id="logout-btn" action="/logout?_method=DELETE" method="POST">
+                    <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent;cursor:pointer">Logout</button>
                 </form>
               </div>
             </div>
           </nav>
         <header>
             <div class="top-text">
-                <a>Your saved To Do Lists:</a><br>
+                <a>Your profile informations:</a><br>
                 <!--<button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="create">Create</button>-->
             </div>
         </header>
 
         <div class="top-container">
-            <table id="listsTable" data-paging="false" class="table">
+          <a>Username: <%= username %></a>
+          
+
+            <!-- <table id="listsTable" data-paging="false" class="table">
                 <thead  class="thead-dark">
                   <tr>
                     <th scope="col">#</th>
@@ -128,12 +80,12 @@
                 %>
             </table>
             <button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="create">Create a New List</button>
-            <!-- <form action="/index">
+            <form action="/index">
               <input type="submit" class="btn" id="create" value="Create a new list">
-          </form> -->
-        </div>
+          </form>
+        </div> -->
 
-        
+        <!-- 
         <form class="credentials" action="/createlists" method="POST">
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -161,7 +113,7 @@
             </div>
           </div>
           </form>
-       
+        -->
 
         <footer>
            

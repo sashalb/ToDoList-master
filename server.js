@@ -17,6 +17,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 var dbcontext = require('./dbcontext.js');
 let loggedUser = require('./dbcontext.js');
+const LoggedUser = require('./dbcontext.js');
 
 
 
@@ -86,7 +87,7 @@ app.get('/', async function (req, res)  {
         res.render('login.ejs');
 })
 app.get('/lists',async  function (req, res) {
-    if(req.session.user !=null || req.session.user !=undefined)
+    if(req.session.user!=null || req.session.user!=undefined)
      {
         console.log(req.session.iduser);
         const rtn =  await dbcontext.GetUserLists(req.session.iduser);
@@ -102,6 +103,17 @@ app.get('/lists',async  function (req, res) {
     else
         res.render('login.ejs');
 })
+
+app.get('/profile', async function (req, res){
+    if(req.session.user !=null || req.session.user !=undefined)
+     {         
+        res.render('profile.ejs');
+     }
+   
+    else
+        res.render('login.ejs');
+})
+
 app.get('/login', (req, res) => {
     res.render('login.ejs');
 })
