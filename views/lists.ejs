@@ -53,21 +53,15 @@
                   }) 
             }
 
-            function LogOut(){
+            /* function LogOut(){
                 if (confirm("Log out from this account?"))
                 {
                     $.ajax({
-                      type: 'post',
-                      url: '/logout',
-                      action: '/logout?_method=DELETE',
-                      method: 'POST',
-
-                      success: function(){
-                        window.location.href = "/login";
+                      
                       }
                     })
                 }
-            }
+            } */
         </script>
     </head>
    
@@ -92,7 +86,7 @@
           </nav>
         <header>
             <div class="top-text">
-                <a>Your saved To Do Lists:</a><br>
+                <h3>Your saved To Do Lists:</h3><br>
                 <!--<button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="create">Create</button>-->
             </div>
         </header>
@@ -162,9 +156,12 @@
           </div>
           </form>
        
-
-        <footer>
-           
+          <footer>
+            <div id="bottom-fact">
+                <p>
+                    Did you know?<span id="fact"></span>
+                </p>
+            </div>
         </footer>
 
         

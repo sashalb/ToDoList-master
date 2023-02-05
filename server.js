@@ -11,9 +11,7 @@ const bcrypt = require('bcrypt');       //using bcrypt library to hash passwords
 const flash = require('express-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
-const initializePassport = require('./passport-config');
 const sqlite3 = require('sqlite3').verbose();
-const LocalStrategy = require('passport-local').Strategy;
 
 var dbcontext = require('./dbcontext.js');
 let loggedUser = require('./dbcontext.js');
@@ -128,13 +126,10 @@ app.post('/login', async  function (req, res)  {
    
     var email = req.body.email;
     var password = req.body.password;
-  
     
     // CALL DOAUTHENTICATE FOR LOGIN
     const rtn =  await dbcontext.doAuthenticate(email,password);
     
-
-
     if(rtn!=undefined)
     {
         let loggeduser = new loggedUser(rtn.ID,rtn.UserName,rtn.Email, rtn.Password);
@@ -151,9 +146,7 @@ app.post('/login', async  function (req, res)  {
     {
         console.log("Login fallito");
         req.flash('error', "Bad username or password!!");
-        disconnect(req,res);
-        
-       
+        disconnect(req,res);  
     }
  });    
 
@@ -176,6 +169,7 @@ app.post('/register', async function(req, res)  {         //asyncronous function
     }
    
 })
+
 // POST FUNCTION TO CREATE AN USER TODO LIST
 app.post('/createlists',async function(req, res, next){
     console.log("entro");
@@ -196,8 +190,7 @@ app.post('/createlists',async function(req, res, next){
 
             // req.flash('allRows', rtn1);
             res.render('index.ejs');
-        }
-        
+        }   
     }
 });
 
@@ -205,7 +198,6 @@ app.post('/createlists',async function(req, res, next){
 app.post('/deletelists',async function(req, res, next){
     console.log("entro delete");
     var IdItem = req.body.IdItem;
-   
   
         console.log(IdItem);
         const rtn =  await dbcontext.DeleteUserList(IdItem);
@@ -221,7 +213,8 @@ app.post('/deletelists',async function(req, res, next){
         res.render('lists.ejs');
   
 });
-// POST FUNCTION TO DELETE AN USER TODO LIST
+
+// POST FUNCTION TO OPEN AN USER TODO LIST
 app.post('/openlists',async function(req, res, next){
     console.log("entro openlists");
     var IdItem = req.body.IdItem;
@@ -236,7 +229,7 @@ app.post('/openlists',async function(req, res, next){
   
 });
 
-// POST FUNCTION TO DELETE AN USER TODO LIST
+// POST FUNCTION TO INSERT A NEW ITEM IN A LIST
 app.post('/insertitemlist',async function(req, res, next){
     console.log("entro insertitemlist");
       var description = req.body.description;

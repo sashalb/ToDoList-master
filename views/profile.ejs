@@ -41,51 +41,37 @@
           </nav>
         <header>
             <div class="top-text">
-                <a>Your profile informations:</a><br>
+                <h3>Your profile informations:</h3><br>
                 <!--<button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="create">Create</button>-->
             </div>
         </header>
 
-        <div class="top-container">
-          <a>Username: <%= username %></a>
-          
+        <div class="top-container">        
+          <table>
+            <tr>
+              <th>Username:</th>
+              <td><%= username %></td>
+              <td><button class="btn btn-outline-secondary">Change Username</button></td>
+            </tr>
+            <tr>
+              <th>Email:</th>
+              <td></td>
+              <td><button class="btn btn-outline-secondary">Change Email</button></td>
+            </tr>
+            <tr>
+              <th>Password:</th>
+              <td></td>
+              <td><button class="btn btn-outline-secondary">Change Password</button></td>
+            </tr>
+            <!-- <tr>
+              <td>Log out from this account</td>
+              <td><form id="logout-btn" action="/logout?_method=DELETE" method="POST">
+                <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent;cursor:pointer">Logout</button>
+            </form></td>
+            </tr> -->
+          </table>
+        </div>
 
-            <!-- <table id="listsTable" data-paging="false" class="table">
-                <thead  class="thead-dark">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">IdUser</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <%
-                if(messages.allRows!=null)
-                {
-                  for(let row of messages.allRows ){
-                    var id =row.Id;
-                    var command="OpenList("+ id +",'" +  row.Nome +"')" %>
-                    <tbody>
-                        <tr style="cursor: pointer;" onclick='<%= command %>'>
-                            <td><%= row.Id %></td>
-                            <td><%= row.Nome %></td>
-                            <td><%= row.Timestamp %></td>
-                            <td><%= row.IdUser %></td>
-                            <td><i onclick="DeleteItem(<%= row.Id %>)" class="fa fa-trash" aria-hidden="true"></i></td>
-                        </tr>
-                    </tbody>
-                    <% }
-                } 
-                %>
-            </table>
-            <button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="create">Create a New List</button>
-            <form action="/index">
-              <input type="submit" class="btn" id="create" value="Create a new list">
-          </form>
-        </div> -->
-
-        <!-- 
         <form class="credentials" action="/createlists" method="POST">
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -112,12 +98,15 @@
               </div>
             </div>
           </div>
-          </form>
-        -->
+        </form>
 
         <footer>
-           
-        </footer>
+          <div id="bottom-fact">
+              <p>
+                  Did you know?<span id="fact"></span>
+              </p>
+          </div>
+      </footer>
 
         
     </body>
