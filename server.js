@@ -34,7 +34,7 @@ app.use(session({
 
 app.use(function (req, res, next) {
     res.locals.username = req.session.username ;
-   
+    res.locals.email = req.session.email ;
     next();
   });
 
@@ -45,17 +45,22 @@ app.use(express.static(__dirname + '/public'));
 app.get('/edit', async  function  (req, res)  {
     if(req.session.user !=null || req.session.user !=undefined)
     {
-        console.log("app.locals.listindex:" + app.locals.listindex);
+       
         if(app.locals.listindex!=undefined)
         {
+            console.log("app.locals.listindex:" + app.locals.listindex);
             const rtn =  await dbcontext.GetUserListsItems(app.locals.listindex);
             console.log(rtn);
             if (rtn.length > 0)
                 req.flash('allRowsItems', rtn);
             else
                 req.flash('allRowsItems', null);
+
+                res.render('edit.ejs');
         }    
-        res.render('edit.ejs');
+        
+
+       
     }       
     else
         res.render('login.ejs');
@@ -102,8 +107,9 @@ app.get('/profile', async function (req, res){
     if(req.session.user !=null || req.session.user !=undefined)
      {  
         console.log("entro in profile");
-        email = req.flash('email', loggedUser.email);
-        //console.log(email);
+        console.log(req.session.email);
+        req.flash('email', req.session.email);
+        
         res.render('profile.ejs');
      }
    
@@ -135,6 +141,7 @@ app.post('/login', async  function (req, res)  {
         req.session.user = loggeduser;
         req.session.username = loggeduser.username;
         req.session.iduser = loggeduser.id;
+        req.session.email = loggeduser.email;
         req.session.save();
 
         console.log("Login Eseguito con successo");
@@ -178,9 +185,17 @@ app.post('/changeUser', async function(req, res, next){
     if(newUsername != ""){
         console.log(newUsername);
         //const rtn = await dbcontext.LoggedUser.setUsername(newUsername);
-        //const rtn = await dbcontext.changeUsername(newUsername, idUser);
-
-        res.render('profile.ejs');
+        const rtn = await dbcontext.changeUsername(newUsername, idUser);
+        console.log(rtn);
+        if(rtn)
+        {
+            req.flash('username', newUsername);
+            req.session.username = newUsername;
+            res.locals.username = req.session.username ;
+            req.session.save();
+            res.render('profile.ejs');
+        }
+        
     }
 });
 
