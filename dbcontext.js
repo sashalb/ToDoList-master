@@ -39,6 +39,21 @@ let LoggedUser = class {
         this.password = newPsw;
     }
 }
+
+async function changeUsername(newUsername, idUser){
+    return new Promise(function(resolve,reject){
+        let sql = 'UPDATE Tb_Users SET UserName = ? WHERE ID = ?', newUsername, idUser;
+        db.run(sql, [], async function(err, rows){
+            if(err)
+            {
+                return console.log(err); 
+                reject(-1);
+            }
+            else
+                resolve(rows);
+            })
+    })
+}
  
 // THIS FUNCTION CHECK IF EMAIL EXIST INTO DB THEN RETURN NULL
 // IF EMAIL EXIST CHECK INPUT HASHED PASSWORD WITH STORED PASSWORD FOR THIS EMAIL
@@ -178,14 +193,10 @@ async function InsertUserList(description,iduser){
                     else
                     {
                         resolve(lastindex);
-                    }
-                   
-                   
-                 });
+                    }           
+               });
             }
-           
-           
-         });
+        });
     });
 }
 
@@ -243,3 +254,4 @@ module.exports.InsertUserList = InsertUserList;
 module.exports.DeleteUserList = DeleteUserList;
 module.exports.InsertItemUserList = InsertItemUserList;
 module.exports.GetUserListsItems = GetUserListsItems;
+module.exports.changeUsername = changeUsername;

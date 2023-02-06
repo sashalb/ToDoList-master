@@ -54,16 +54,13 @@ app.get('/edit', async  function  (req, res)  {
                 req.flash('allRowsItems', rtn);
             else
                 req.flash('allRowsItems', null);
-    
-        }
-       
-
+        }    
         res.render('edit.ejs');
-    }
-       
+    }       
     else
         res.render('login.ejs');
 })
+
 app.get('/', async function (req, res)  {
     if(req.session.user !=null || req.session.user !=undefined)
     {
@@ -76,14 +73,13 @@ app.get('/', async function (req, res)  {
                 req.flash('allRowsItems', rtn);
             else
                 req.flash('allRowsItems', null);
-
         }
         res.render('lists.ejs');
     }
-        
     else
         res.render('login.ejs');
 })
+
 app.get('/lists',async  function (req, res) {
     if(req.session.user!=null || req.session.user!=undefined)
      {
@@ -104,7 +100,10 @@ app.get('/lists',async  function (req, res) {
 
 app.get('/profile', async function (req, res){
     if(req.session.user !=null || req.session.user !=undefined)
-     {         
+     {  
+        console.log("entro in profile");
+        email = req.flash('email', loggedUser.email);
+        //console.log(email);
         res.render('profile.ejs');
      }
    
@@ -140,6 +139,8 @@ app.post('/login', async  function (req, res)  {
 
         console.log("Login Eseguito con successo");
         req.flash('username', loggeduser.username);
+        req.flash('email', loggeduser.email);
+    
         res.redirect('/lists');
     }
     else
@@ -170,17 +171,30 @@ app.post('/register', async function(req, res)  {         //asyncronous function
    
 })
 
+app.post('/changeUser', async function(req, res, next){
+    console.log("entro in changeUser");
+    var newUsername = req.body.description;
+    var idUser = req.session.iduser
+    if(newUsername != ""){
+        console.log(newUsername);
+        //const rtn = await dbcontext.LoggedUser.setUsername(newUsername);
+        //const rtn = await dbcontext.changeUsername(newUsername, idUser);
+
+        res.render('profile.ejs');
+    }
+});
+
 // POST FUNCTION TO CREATE AN USER TODO LIST
 app.post('/createlists',async function(req, res, next){
     console.log("entro");
     var description = req.body.description;
     var idUser =  req.session.iduser;
-    if(description!="")
+    if(description != "")
     {
         console.log(description);
         console.log(idUser);
         const lastindex =  await dbcontext.InsertUserList(description,idUser);
-        if(lastindex!=-1)
+        if(lastindex != -1)
         {
             console.log(lastindex);
             // const rtn1 =  await dbcontext.GetUserLists(req.session.iduser);
@@ -245,7 +259,6 @@ app.post('/insertitemlist',async function(req, res, next){
     console.log(app.locals.listindex);
 
     res.render('edit.ejs');
-  
 });
 
 //LOGOUT

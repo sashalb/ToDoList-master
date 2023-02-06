@@ -51,17 +51,17 @@
             <tr>
               <th>Username:</th>
               <td><%= username %></td>
-              <td><button class="btn btn-outline-secondary">Change Username</button></td>
+              <td><button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="changeUser">Change Username</button></td>
             </tr>
             <tr>
               <th>Email:</th>
-              <td><%= %></td>
+              <td><%=  %></td>
               <!-- <td><button class="btn btn-outline-secondary">Change Email</button></td> -->
               <td>Email cannot be changed</td>
             </tr>
             <tr>
               <th>Password:</th>
-              <td><%= %></td>
+              <td>*************</td>
               <td><button class="btn btn-outline-secondary">Change Password</button></td>
             </tr>
             <!-- <tr>
@@ -73,12 +73,12 @@
           </table>
         </div>
 
-        <form class="credentials" action="/createlists" method="POST">
+        <form class="credentials" action="/changeUser" method="POST">
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">New To Do List</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Change your username</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -86,7 +86,7 @@
                 <div class="modal-body">
                   <form>
                     <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Description:</label>
+                      <label for="recipient-name" class="col-form-label">New username:</label>
                       <input type="text" class="form-control" id="description" name="description" required>
                     </div>
                     
