@@ -25,7 +25,8 @@
                   GetRandomItem();
                });
     </script>
-    <body>
+
+    <body OnLoad="document.myform.description.focus();">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#"><%= username %>'s To Do List</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +34,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="/index">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="/edit">Edit <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="/profile">Profile</a>
                 <a class="nav-item nav-link" href="/lists">My Lists</a>
                 <!-- <a class="nav-item nav-link" onclick="darkMode()">Dark/Light</a> -->
@@ -54,7 +55,7 @@
 
         <div class="top-container">
           <h3>Current list: <%= descriptionList %></h3>
-          <form  action="/insertitemlist" method="POST">
+          <form  action="/insertitemlist" method="POST" name="myform">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Write something..." aria-describedby="button-addon2" id="description" name="description">
                 <input type="hidden" class="form-control"id="listId" name="listId" value=<%= listindex %>>
@@ -64,10 +65,13 @@
                 
             </div>
           </form>
-            <button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" style="margin-top: 3px;" id="save">Save List</button>
-            <div class="listholderstyle">
-                <ul class="list-group list-group-flush" id="list-holder"></ul>
-            </div>
+
+         <!--  <button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" style="margin-top: 3px;" id="save">Save List</button>
+
+          <div class="listholderstyle">
+              <ul class="list-group list-group-flush" id="list-holder"></ul>
+          </div> -->
+
             <table id="listsTable" data-paging="false" class="table">
               <thead  class="thead-dark">
                 <tr>
@@ -95,7 +99,7 @@
            
         </div>
 
-        <!------------------------------------------------------------------------------------------------>
+        <!-----------------------------------------------------------------------------------------------
         <form class="credentials" action="/createlists" method="POST">
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -123,7 +127,7 @@
               </div>
             </div>
         </form>
-        <!------------------------------------------------------------------------------------------------>
+        ------------------------------------------------------------------------------------------------>
 
         <footer>
             <div id="bottom-fact">

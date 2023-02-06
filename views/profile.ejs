@@ -29,9 +29,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
-                <a class="nav-item nav-link"  href="/index">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Profile</a>
-                <a class="nav-item nav-link active" href="/lists">My Lists</a>
+                <a class="nav-item nav-link"  href="/edit">Edit <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="/profile">Profile</a>
+                <a class="nav-item nav-link" href="/lists">My Lists</a>
                 <!-- <a class="nav-item nav-link" onclick="darkMode()">Dark/Light</a> -->
                 <form id="logout-btn" action="/logout?_method=DELETE" method="POST">
                     <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent;cursor:pointer">Logout</button>
@@ -55,12 +55,13 @@
             </tr>
             <tr>
               <th>Email:</th>
-              <td></td>
-              <td><button class="btn btn-outline-secondary">Change Email</button></td>
+              <td><%= %></td>
+              <!-- <td><button class="btn btn-outline-secondary">Change Email</button></td> -->
+              <td>Email cannot be changed</td>
             </tr>
             <tr>
               <th>Password:</th>
-              <td></td>
+              <td><%= %></td>
               <td><button class="btn btn-outline-secondary">Change Password</button></td>
             </tr>
             <!-- <tr>

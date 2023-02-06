@@ -42,7 +42,7 @@ app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
 
 //routing setup for the application
-app.get('/index', async  function  (req, res)  {
+app.get('/edit', async  function  (req, res)  {
     if(req.session.user !=null || req.session.user !=undefined)
     {
         console.log("app.locals.listindex:" + app.locals.listindex);
@@ -58,7 +58,7 @@ app.get('/index', async  function  (req, res)  {
         }
        
 
-        res.render('index.ejs');
+        res.render('edit.ejs');
     }
        
     else
@@ -142,7 +142,7 @@ app.post('/login', async  function (req, res)  {
         req.flash('username', loggeduser.username);
         res.redirect('/lists');
     }
-    else 
+    else
     {
         console.log("Login fallito");
         req.flash('error', "Bad username or password!!");
@@ -189,7 +189,7 @@ app.post('/createlists',async function(req, res, next){
             app.locals.descriptionList = description;
 
             // req.flash('allRows', rtn1);
-            res.render('index.ejs');
+            res.render('edit.ejs');
         }   
     }
 });
@@ -225,29 +225,26 @@ app.post('/openlists',async function(req, res, next){
 
     console.log(app.locals.listindex);
     console.log(app.locals.descriptionList);
-    res.render('index.ejs');
+    res.render('edit.ejs');
   
 });
 
 // POST FUNCTION TO INSERT A NEW ITEM IN A LIST
 app.post('/insertitemlist',async function(req, res, next){
     console.log("entro insertitemlist");
-      var description = req.body.description;
-      var listId = req.body.listId;
+    var description = req.body.description;
+    var listId = req.body.listId;
   
-        console.log(description);
-       
-
-         const rtn1 =  await dbcontext.InsertItemUserList(description,listId);
-         console.log(rtn1);
-       
-        app.locals.listindex = listId;
-
-
-        console.log(app.locals.listindex);
+    console.log(description);
     
+    const rtn1 =  await dbcontext.InsertItemUserList(description,listId);
+    console.log(rtn1);
+    
+    app.locals.listindex = listId;
 
-        res.render('index.ejs');
+    console.log(app.locals.listindex);
+
+    res.render('edit.ejs');
   
 });
 

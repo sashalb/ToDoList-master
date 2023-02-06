@@ -20,14 +20,23 @@ let LoggedUser = class {
     getId() {
         return this.id;
     }
+
     getUsername() {
         return this.username;
     }
+    setUsername(newName){
+        this.username = newName;
+    }
+
     getEmail() {
         return this.email;
     }
+
     getPassword() {
         return this.password;
+    }
+    setPassword(newPsw){
+        this.password = newPsw;
     }
 }
  
@@ -199,7 +208,7 @@ async function InsertItemUserList(description,idlist){
 }
 
 
-// THIS FUNCTION CREATE A NEW USER LIST
+// THIS FUNCTION DELETES A LIST
 async function DeleteUserList (iditem){
     return new Promise(function(resolve,reject){
         let sql = 'DELETE From Tb_ToDoLists WHERE Id =?' ;
