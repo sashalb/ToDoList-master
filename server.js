@@ -46,7 +46,8 @@ app.get('/edit', async  function  (req, res)  {
     if(req.session.user !=null || req.session.user !=undefined)
     {
        
-        if(app.locals.listindex!=undefined)
+        if(app.locals.listindex!=undefined && 
+            app.locals.listindex!=-1 )
         {
             console.log("app.locals.listindex:" + app.locals.listindex);
             const rtn =  await dbcontext.GetUserListsItems(app.locals.listindex);
@@ -56,10 +57,17 @@ app.get('/edit', async  function  (req, res)  {
             else
                 req.flash('allRowsItems', null);
 
-                res.render('edit.ejs');
-        }    
-        
+                
+        }  
+        else
+        {
+            app.locals.descriptionList = "";  
+            console.log("app.locals.listindex: undefined");
+            app.locals.listindex=-1;
+        }
+       
 
+        res.render('edit.ejs');
        
     }       
     else
