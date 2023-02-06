@@ -41,16 +41,22 @@ let LoggedUser = class {
 }
 
 async function changeUsername(newUsername, idUser){
+    console.log('entro changeUsername');
     return new Promise(function(resolve,reject){
-        let sql = 'UPDATE Tb_Users SET UserName = ? WHERE ID = ?', newUsername, idUser;
-        db.run(sql, [], async function(err, rows){
+        let sql = 'UPDATE Tb_Users SET UserName = ? WHERE ID = ?';
+        db.run(sql, [newUsername, idUser], async function(err, rows){
             if(err)
             {
+                console.log(err);
                 return console.log(err); 
                 reject(-1);
             }
             else
-                resolve(rows);
+            {
+                console.log("success");
+                resolve(true);
+            }
+                
             })
     })
 }
