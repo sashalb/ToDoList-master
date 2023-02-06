@@ -55,6 +55,9 @@
 
         <div class="top-container">
           <h3>Current list: <%= descriptionList %></h3>
+          <%
+          if(listindex!=-1)
+          { %>
           <form  action="/insertitemlist" method="POST" name="myform">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Write something..." aria-describedby="button-addon2" id="description" name="description">
@@ -65,7 +68,8 @@
                 
             </div>
           </form>
-
+          <%} 
+          %>
          <!--  <button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" style="margin-top: 3px;" id="save">Save List</button>
 
           <div class="listholderstyle">
