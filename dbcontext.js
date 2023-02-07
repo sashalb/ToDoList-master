@@ -149,7 +149,9 @@ async function doAuthenticate(email,password){
 // THIS FUNCTION GET LISTS STORED FOR THIS USER
 async function GetUserLists(iduser){
     return new Promise(function(resolve,reject){
-        let sql = 'SELECT * FROM Tb_ToDoLists WHERE IdUser = ' + iduser + ' order by Timestamp DESC ';
+        let sql = 'SELECT  Tb_ToDoLists.Id,Tb_ToDoLists.IdUser,Tb_ToDoLists.Nome,Tb_ToDoLists.Timestamp, Count(TDLI.Id) as ITEMS,(Select count(*) from Tb_ToDoList_Items where Status=1 and Tb_ToDoList_Items.IdToDoLists= Tb_ToDoLists.Id) as DONE  from Tb_ToDoLists ' +
+                'LEFT  JOIN Tb_ToDoList_Items TDLI on TDLI.IdToDoLists= Tb_ToDoLists.Id ' +
+                'WHERE Tb_ToDoLists.IdUser=' + iduser + ' GROUP BY Tb_ToDoLists.Nome order by Tb_ToDoLists.Timestamp DESC ';
         db.all(sql,[], async function(err, rows) {
             if(err){return console.log(err); reject(err);}
             //console.log(rows);
@@ -166,7 +168,7 @@ async function GetUserLists(iduser){
 
 async function GetUserListsItems(idlist){
     return new Promise(function(resolve,reject){
-        let sql = 'SELECT * FROM Tb_ToDoList_Items WHERE IdToDoLists = ' + idlist ;
+        let sql = 'SELECT * FROM Tb_ToDoList_Items WHERE IdToDoLists = ' + idlist + ' order by Timestamp desc' ;
         db.all(sql,[], async function(err, rows) {
             if(err){return console.log(err); reject(err);}
            
@@ -209,7 +211,7 @@ async function InsertUserList(description,iduser){
 // THIS FUNCTION CREATE A NEW ITEM IN LIST
 async function InsertItemUserList(description,idlist){
     return new Promise(function(resolve,reject){
-        let sql = 'INSERT INTO  Tb_ToDoList_Items (IdToDoLists,Descrizione,Position) VALUES (?,?,?)' ;
+        let sql = 'INSERT INTO  Tb_ToDoList_Items (IdToDoLists,Descrizione,Status) VALUES (?,?,?)' ;
         db.run(sql,[idlist,description,0], async function(err, rows) {
             if(err)
             {
@@ -243,6 +245,42 @@ async function DeleteUserList (iditem){
     });
 }
 
+// THIS FUNCTION DELETE ITEM FROM USERLIST
+async function DeleteItemList (iditem){
+    return new Promise(function(resolve,reject){
+        let sql = 'DELETE From Tb_ToDoList_Items WHERE Id =?' ;
+        db.run(sql,[iditem], async function(err, rows) {
+            if(err)
+            {
+                return console.log(err); 
+                reject(err);
+            }
+            else
+                resolve(true);
+           
+           
+         });
+    });
+}
+
+// THIS FUNCTION TOGGLE STATUS ITEM FROM USERLIST
+async function ToggleItemList (iditem,status){
+    return new Promise(function(resolve,reject){
+        let sql = 'UPDATE Tb_ToDoList_Items SET Status= ? WHERE Id =?' ;
+        db.run(sql,[status,iditem], async function(err, rows) {
+            if(err)
+            {
+                return console.log(err); 
+                reject(err);
+            }
+            else
+                resolve(true);
+           
+           
+         });
+    });
+}
+
 // THIS FUNCTION HASH PASSWORD TO STORE INTO DB
 async function hashPassword(password) {
     var hash = crypto.createHash('sha256');
@@ -261,3 +299,6 @@ module.exports.DeleteUserList = DeleteUserList;
 module.exports.InsertItemUserList = InsertItemUserList;
 module.exports.GetUserListsItems = GetUserListsItems;
 module.exports.changeUsername = changeUsername;
+module.exports.DeleteItemList = DeleteItemList;
+module.exports.ToggleItemList = ToggleItemList;
+

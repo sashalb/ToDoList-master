@@ -35,6 +35,8 @@
                       }
                   })
                 }
+                else
+                   window.location.href = "/lists";
               
             }
 
@@ -66,14 +68,18 @@
     </head>
    
     <body>
+      <div style="background-color:#f8f9fa;width: 100%;"> 
+        <a  style="margin-left: 25px;color: black;" ><%= username %>'s To Do List</a>
+      </div>
+       
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"><%= username %>'s To Do List</a>
+            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
-                <a class="nav-item nav-link"  href="/edit">Edit <span class="sr-only">(current)</span></a>
+                <!-- <a class="nav-item nav-link"  href="/edit">Edit <span class="sr-only">(current)</span></a> -->
                 <a class="nav-item nav-link" href="/profile">Profile</a>
                 <a class="nav-item nav-link active" href="/lists">My Lists</a>
                 <!-- <a class="nav-item nav-link" onclick="darkMode()">Dark/Light</a> -->
@@ -98,8 +104,8 @@
                     <th scope="col">#</th>
                     <th scope="col">Description</th>
                     <th scope="col">Date</th>
-                    <th scope="col">IdUser</th>
-                    <th scope="col"></th>
+                    <th scope="col">Tot.Items</th>
+                    <th scope="col">Completed</th>
                   </tr>
                 </thead>
                 <%
@@ -109,12 +115,12 @@
                     var id =row.Id;
                     var command="OpenList("+ id +",'" +  row.Nome +"')" %>
                     <tbody>
-                        <tr style="cursor: pointer;" onclick='<%= command %>'>
-                            <td><%= row.Id %></td>
-                            <td><%= row.Nome %></td>
-                            <td><%= row.Timestamp %></td>
-                            <td><%= row.IdUser %></td>
+                        <tr >
                             <td><i onclick="DeleteItem(<%= row.Id %>)" class="fa fa-trash" aria-hidden="true"></i></td>
+                            <td style="cursor: pointer;" onclick='<%= command %>'><%= row.Nome %></td>
+                            <td style="cursor: pointer;" onclick='<%= command %>'><%= row.Timestamp %></td>
+                            <td style="cursor: pointer;" onclick='<%= command %>'><%= row.ITEMS %></td>
+                            <td style="cursor: pointer;" onclick='<%= command %>'><%= row.DONE %></td>
                         </tr>
                     </tbody>
                     <% }
@@ -154,11 +160,7 @@
           </form>
        
           <footer>
-            <div id="bottom-fact">
-                <p>
-                    Did you know?<span id="fact"></span>
-                </p>
-            </div>
+           
         </footer>
 
         
