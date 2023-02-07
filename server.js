@@ -226,7 +226,7 @@ app.post('/createlists',async function(req, res, next){
             app.locals.descriptionList = description;
 
             // req.flash('allRows', rtn1);
-            res.render('edit.ejs');
+            res.redirect('/lists');
         }   
     }
 });
@@ -248,6 +248,39 @@ app.post('/deletelists',async function(req, res, next){
             req.flash('allRows', null);
        
         res.render('lists.ejs');
+  
+});
+
+app.post('/deleteitem',async function(req, res, next){
+    console.log("entro delete ItemLists");
+    var IdItem = req.body.IdItem;
+  
+        console.log(IdItem);
+        const rtn =  await dbcontext.DeleteItemList(IdItem);
+        console.log(rtn);
+
+        console.log(app.locals.listindex);
+
+        res.redirect('/edit');
+  
+});
+
+app.post('/togglestatus',async function(req, res, next){
+    console.log("entro delete ItemLists");
+    var IdItem = req.body.IdItem;
+    var Status = req.body.Status;
+    if (Status==1)
+        Status =0;
+    else
+        Status =1;
+
+        console.log(IdItem);
+        const rtn =  await dbcontext.ToggleItemList(IdItem,Status);
+        console.log(rtn);
+
+        console.log(app.locals.listindex);
+
+        res.redirect('/edit');
   
 });
 
@@ -281,7 +314,7 @@ app.post('/insertitemlist',async function(req, res, next){
 
     console.log(app.locals.listindex);
 
-    res.render('edit.ejs');
+    res.redirect('/edit');
 });
 
 //LOGOUT
