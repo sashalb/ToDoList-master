@@ -24,10 +24,10 @@ let LoggedUser = class {
     getUsername() {
         return this.username;
     }
-    setUsername(newName){
+   /*  setUsername(newName){
         this.username = newName;
     }
-
+ */
     getEmail() {
         return this.email;
     }
@@ -35,9 +35,9 @@ let LoggedUser = class {
     getPassword() {
         return this.password;
     }
-    setPassword(newPsw){
+   /*  setPassword(newPsw){
         this.password = newPsw;
-    }
+    } */
 }
 
 async function changeUsername(newUsername, idUser){
@@ -60,6 +60,40 @@ async function changeUsername(newUsername, idUser){
             })
     })
 }
+
+async function changePassword(oldPsw, currentPsw, newPsw, idUser){
+    console.log('entro changePassword');
+
+    var oldHash = await hashPassword(oldPsw);
+    var newHash = await hashPassword(newPsw);
+
+        return new Promise(function(resolve, reject){
+            if(oldHash == currentPsw)
+            {
+                let sql = 'UPDATE Tb_Users SET Password = ? WHERE ID = ?';
+                db.run(sql, [newHash, idUser], async function(err, rows){
+                    if(err)
+                    {
+                        console.log(err);
+                        resolve(500);  
+                        reject(-1);
+                    }
+                    else
+                    {
+                        console.log("success");
+                        resolve(200);
+                    }
+                })
+            }  
+            else
+            {
+                console.log('la vecchia non coincide');
+                resolve(-1); 
+            }
+
+        })
+}
+
  
 // THIS FUNCTION CHECK IF EMAIL EXIST INTO DB THEN RETURN NULL
 // IF EMAIL EXIST CHECK INPUT HASHED PASSWORD WITH STORED PASSWORD FOR THIS EMAIL
@@ -74,14 +108,14 @@ async function doAuthenticate(email,password){
              //console.log("user not found");
              loggeduser= null ;
            } 
-           //console.log("Password letta a db="+ row1.Password);
+           console.log("Password letta a db="+ row1.Password);
            var hash = await hashPassword(password);
        
-           //console.log("Password inserita hashata="+ hash);
+           console.log("Password inserita hashata="+ hash);
            
            db.get('SELECT UserName,Email, ID, Password FROM TB_Users WHERE Email = ? AND Password = ?', email, hash,  function(err, row) {
                 if(err){return reject(err);}
-                
+                console.log(row);
                 resolve(row);
            
        
@@ -228,7 +262,7 @@ async function InsertItemUserList(description,idlist){
 
 
 // THIS FUNCTION DELETES A LIST
-async function DeleteUserList (iditem){
+async function DeleteUserList(iditem){
     return new Promise(function(resolve,reject){
         let sql = 'DELETE From Tb_ToDoLists WHERE Id =?' ;
         db.run(sql,[iditem], async function(err, rows) {
@@ -246,7 +280,7 @@ async function DeleteUserList (iditem){
 }
 
 // THIS FUNCTION DELETE ITEM FROM USERLIST
-async function DeleteItemList (iditem){
+async function DeleteItemList(iditem){
     return new Promise(function(resolve,reject){
         let sql = 'DELETE From Tb_ToDoList_Items WHERE Id =?' ;
         db.run(sql,[iditem], async function(err, rows) {
@@ -299,6 +333,7 @@ module.exports.DeleteUserList = DeleteUserList;
 module.exports.InsertItemUserList = InsertItemUserList;
 module.exports.GetUserListsItems = GetUserListsItems;
 module.exports.changeUsername = changeUsername;
+module.exports.changePassword = changePassword;
 module.exports.DeleteItemList = DeleteItemList;
 module.exports.ToggleItemList = ToggleItemList;
-
+// module.exports.hashPassword = hashPassword;

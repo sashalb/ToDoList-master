@@ -20,58 +20,47 @@
         
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <script type="text/javascript">
-           function DeleteItem(id)
-            {
-                if (confirm("Are you sure?"))
-                {
-                  $.ajax({
-                      type: 'post',
-                      url: '/deletelists',
-                      data: { 
-                          'IdItem': id
-                      },
-                      success: function (data) {
-                        window.location.href = "/lists";
-                      }
-                  })
-                }
-                else
-                   window.location.href = "/lists";
-              
-            }
 
-            function OpenList(id,Nome)
-            {
-                  $.ajax({
-                      type: 'post',
-                      url: '/openlists',
-                      data: { 
-                          'IdItem': id,
-                          'Nome':Nome
-                      },
-                      success: function (data) {
-                        window.location.href = "/edit";
-                      }
-                  }) 
-            }
+          function DeleteItem(id){
+              if (confirm("Are you sure?"))
+              {
+                $.ajax({
+                    type: 'post',
+                    url: '/deletelists',
+                    data: { 
+                        'IdItem': id
+                    },
+                    success: function (data) {
+                      window.location.href = "/lists";
+                    }
+                })
+              }
+              else
+                  window.location.href = "/lists";
+          }
 
-            /* function LogOut(){
-                if (confirm("Log out from this account?"))
-                {
-                    $.ajax({
-                      
-                      }
-                    })
-                }
-            } */
+          function OpenList(id,Nome){
+                $.ajax({
+                    type: 'post',
+                    url: '/openlists',
+                    data: { 
+                        'IdItem': id,
+                        'Nome':Nome
+                    },
+                    success: function (data) {
+                      window.location.href = "/edit";
+                    }
+                }) 
+          }
+
         </script>
     </head>
    
     <body>
-      <div style="background-color:#f8f9fa;width: 100%;"> 
+      <div id="topbar"> 
         <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
                   width="50px" alt="profile" style="margin-left: 25px;">
-        <a  style="margin-left: 5px;color: black;" ><%= username %>'s To Do List</a>
+        <a id="title"><%= username %>'s To Do List</a>
       </div>
        
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -84,11 +73,11 @@
                 <!-- <a class="nav-item nav-link"  href="/edit">Edit <span class="sr-only">(current)</span></a> -->
                 <a class="nav-item nav-link" href="/profile">Profile</a>
                 <a class="nav-item nav-link active" href="/lists">My Lists</a>
-                <!-- <a class="nav-item nav-link" onclick="darkMode()">Dark/Light</a> -->
                 <!-- <form id="logout-btn" action="/logout?_method=DELETE" method="POST"> -->
                 <form id="logout-btn" action="/logout?_method=DELETE" method="POST">
-                    <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent;cursor:pointer" onclick="LogOut()">Logout</button>
+                    <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent; cursor:pointer" onclick="return confirm('Logout form this account?');">Logout</button>
                 </form>
+                <!-- <a class="nav-item nav-link" onclick="darkMode()" style="cursor: pointer;">Dark/Light</a> -->
               </div>
             </div>
           </nav>
@@ -117,8 +106,8 @@
                     var id =row.Id;
                     var command="OpenList("+ id +",'" +  row.Nome +"')" %>
                     <tbody>
-                        <tr >
-                            <td><i onclick="DeleteItem(<%= row.Id %>)" class="fa fa-trash" aria-hidden="true"></i></td>
+                        <tr>
+                            <td><i onclick="DeleteItem(<%= row.Id %>)" class="fa fa-trash" aria-hidden="true" style="cursor: pointer;"></i></td>
                             <td style="cursor: pointer;" onclick='<%= command %>'><%= row.Nome %></td>
                             <td style="cursor: pointer;" onclick='<%= command %>'><%= row.Timestamp %></td>
                             <td style="cursor: pointer;" onclick='<%= command %>'><%= row.ITEMS %></td>
@@ -169,15 +158,22 @@
     </body>
     
 
-    <!-- <script src="script/script.js"></script> -->
+    <script src="script/script.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
-    <script>
+    <!-- <script>
         $(document).ready(function () {
         $('#listsTable').DataTable({
           responsive: true
+              });
         });
-    });
-    </script>
+
+        function darkMode()
+        {
+        var element1 = document.body;
+        element1.classList.toggle("darkmode");
+        }
+
+    </script> -->
    
 </html>

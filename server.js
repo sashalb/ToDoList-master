@@ -12,7 +12,7 @@ const flash = require('express-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const sqlite3 = require('sqlite3').verbose();
-
+let alert = require('alert');
 var dbcontext = require('./dbcontext.js');
 let loggedUser = require('./dbcontext.js');
 const LoggedUser = require('./dbcontext.js');
@@ -145,23 +145,33 @@ app.post('/login', async  function (req, res)  {
     
     if(rtn!=undefined)
     {
+
+        console.log(rtn.ID);
+        console.log(rtn.UserName);
+        console.log(rtn.Email);
+        console.log(rtn.Password);
+
         let loggeduser = new loggedUser(rtn.ID,rtn.UserName,rtn.Email, rtn.Password);
         req.session.user = loggeduser;
         req.session.username = loggeduser.username;
         req.session.iduser = loggeduser.id;
         req.session.email = loggeduser.email;
+        req.session.password = rtn.Password;
         req.session.save();
 
         console.log("Login Eseguito con successo");
         req.flash('username', loggeduser.username);
         req.flash('email', loggeduser.email);
+        
+        console.log(req.session.password );
+        req.flash('email', loggeduser.Password);
     
         res.redirect('/lists');
     }
     else
     {
         console.log("Login fallito");
-        req.flash('error', "Bad username or password!!");
+        req.flash('error', "Incorrect username or password!!");
         disconnect(req,res);  
     }
  });    
@@ -206,6 +216,42 @@ app.post('/changeUser', async function(req, res, next){
         
     }
 });
+
+// POST FUNCTION TO CHANGE PASSWORD
+app.post('/changePassword', async function(req, res, next){
+    console.log("entro in changePassword");
+    console.log(req.session.password);
+    var oldPsw = req.body.oldpassword;
+    var newPsw = req.body.newpassword;
+    var idUser = req.session.iduser;
+
+    //var oldHash = await dbcontext.hashPassword(oldPsw);
+
+    if(newPsw != ""){
+        // console.log("oldPsw combacia");
+        console.log(newPsw);
+        const rtn = await dbcontext.changePassword(oldPsw, req.session.password, newPsw, idUser);
+        console.log(rtn);
+        if(rtn==200)
+        {
+           
+            req.session.password = newPsw;
+            res.locals.password = req.session.password;
+            req.session.save();
+            res.end('0');
+        }  
+        else if(rtn==500)
+            res.end('500');
+        else if(rtn==-1)
+        {
+            res.end('-1');
+        }
+    }
+
+    
+});
+
+
 
 // POST FUNCTION TO CREATE AN USER TODO LIST
 app.post('/createlists',async function(req, res, next){

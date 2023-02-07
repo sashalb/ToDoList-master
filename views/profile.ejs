@@ -19,13 +19,39 @@
         <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet" type="text/css">
         
         <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script>
+      function ChangePassword()
+      {
+        var oldPass=$("#oldDescription").val();
+        var newPass =$("#newDescription").val();
+
+        $.ajax({
+                  type: 'post',
+                  url: '/changePassword',
+                  data: { 
+                      'oldpassword': oldPass,
+                      'newpassword': newPass
+                  },
+                  success: function (data) {
+                    if (data==-1){
+                      alert("Old password is wrong!")
+                    }else if((data==500))
+                    {
+                      alert("Some sql error occourred!")
+                    }
+                    else
+                      alert("Password changed succesfully!")
+                  }
+              })
+      }
+    </script>
     </head>
-   
+    
     <body>
-      <div style="background-color:#f8f9fa;width: 100%;"> 
+      <div id="topbar"> 
         <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
         width="50px" alt="profile" style="margin-left: 25px;">
-        <a  style="margin-left: 5px;color: black;" ><%= username %>'s To Do List</a>
+        <a id="title"><%= username %>'s To Do List</a>
       </div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           
@@ -39,8 +65,9 @@
                 <a class="nav-item nav-link" href="/lists">My Lists</a>
                 <!-- <a class="nav-item nav-link" onclick="darkMode()">Dark/Light</a> -->
                 <form id="logout-btn" action="/logout?_method=DELETE" method="POST">
-                    <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent;cursor:pointer">Logout</button>
+                    <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent;cursor:pointer" onclick="return confirm('Logout form this account?');">Logout</button>
                 </form>
+                <!-- <a class="nav-item nav-link" onclick="darkMode()" style="cursor: pointer;">Dark/Light</a> -->
               </div>
             </div>
           </nav>
@@ -55,19 +82,23 @@
           <table>
             <tr>
               <th>Username:</th>
-              <td><%= username %></td>
-              <td><button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="changeUser">Change Username</button></td>
+              <td class="tdprofile"><%= username %></td>
+              <td class="tdprofile"><button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="changeUser">Change Username</button></td>
             </tr>
             <tr>
               <th>Email:</th>
-              <td><%= email %></td>
+              <td class="tdprofile"><%= email %></td>
               <!-- <td><button class="btn btn-outline-secondary">Change Email</button></td> -->
-              <td>Email cannot be changed</td>
+              <td class="tdprofile">Email cannot be changed!</td>
             </tr>
             <tr>
               <th>Password:</th>
-              <td>*************</td>
-              <td><button class="btn btn-outline-secondary">Change Password</button></td>
+              <td class="tdprofile">*************</td>
+              <td>
+                  <button type="button" data-toggle="modal" data-target="#passwordModal"  class="btn btn-outline-secondary" id="changePassword">Change Password</button>
+                 
+              </td>
+
             </tr>
             <!-- <tr>
               <td>Log out from this account</td>
@@ -106,6 +137,38 @@
           </div>
         </form>
 
+        <!-- CHANGE PASSWORD -->
+        <form class="credentials" >
+          <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Change your password</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Old password:</label>
+                      <input type="text" class="form-control" id="oldDescription" name="oldDescription" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">New password:</label>
+                      <input type="text" class="form-control" id="newDescription" name="newDescription" required>
+                    </div> 
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" onclick="ChangePassword()">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
         <footer>
           
       </footer>
@@ -114,12 +177,14 @@
     </body>
     
 
-    <!-- <script src="script/script.js"></script> -->
+    <script src="script/script.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function () {
-        $('#listsTable').DataTable();
+         
+            $('#listsTable').DataTable();
+
     });
     </script>
    

@@ -1,4 +1,4 @@
-var items = [];      //item holder
+/* var items = [];      //item holder
 var listHolder = document.getElementById('list-holder');        //list holder
 
 
@@ -54,24 +54,22 @@ txtInput.addEventListener('keypress', function(event){
         event.preventDefault();
         addTodo.click();
     }
-});
+}); */
 
 
 
 
 //darkmode script
-function darkMode()
-{
+function darkMode(){
     var element1 = document.body;
     element1.classList.toggle("darkmode");
 
-    //non funzionaaa
-    var element2 = document.body.li;
+    var element2 = document.body.table;
     element2.classList.toggle("darkmode");
 }
 
 
-
+/* 
 
 function GetRandomItem()
 {
@@ -90,3 +88,4 @@ function GetRandomItem()
         }
     });
 }
+ */
