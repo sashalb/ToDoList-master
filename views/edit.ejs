@@ -60,7 +60,9 @@
 
     <body OnLoad="document.myform.description.focus();">
       <div style="background-color:#f8f9fa;width: 100%;"> 
-        <a  style="margin-left: 25px;color: black;" ><%= username %>'s To Do List</a>
+        <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+        width="50px" alt="profile" style="margin-left: 25px;">
+        <a  style="margin-left: 5px;color: black;" ><%= username %>'s To Do List</a>
       </div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             
@@ -83,13 +85,13 @@
             </div>
           </nav>
         <header>
-            <div class="top-text">
-                <a>Need to remember something? Write it down here!</a><br>
+            <div class="top-container">
+                <h3>Current list: <%= descriptionList %></h3><br>
             </div>
         </header>
 
         <div class="top-container">
-          <h3>Current list: <%= descriptionList %></h3>
+          <a>Need to remember something? Write it down here!</a>
           <%
           if(listindex!=-1)
           { %>
@@ -150,39 +152,7 @@
            
         </div>
 
-        <!-----------------------------------------------------------------------------------------------
-        <form class="credentials" action="/createlists" method="POST">
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Save this To Do List</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Description:</label>
-                        <input type="text" class="form-control" id="description" name="description" required>
-                      </div>
-                      
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </form>
-        ------------------------------------------------------------------------------------------------>
-
-        <footer>
-           
-        </footer>
+      
 
         
       </body>
