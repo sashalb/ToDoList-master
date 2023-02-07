@@ -69,7 +69,9 @@
    
     <body>
       <div style="background-color:#f8f9fa;width: 100%;"> 
-        <a  style="margin-left: 25px;color: black;" ><%= username %>'s To Do List</a>
+        <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                  width="50px" alt="profile" style="margin-left: 25px;">
+        <a  style="margin-left: 5px;color: black;" ><%= username %>'s To Do List</a>
       </div>
        
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -84,25 +86,25 @@
                 <a class="nav-item nav-link active" href="/lists">My Lists</a>
                 <!-- <a class="nav-item nav-link" onclick="darkMode()">Dark/Light</a> -->
                 <!-- <form id="logout-btn" action="/logout?_method=DELETE" method="POST"> -->
-                <form id="logout-btn">
+                <form id="logout-btn" action="/logout?_method=DELETE" method="POST">
                     <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent;cursor:pointer" onclick="LogOut()">Logout</button>
                 </form>
               </div>
             </div>
           </nav>
         <header>
-            <div class="top-text">
+            <div class="top-container">
                 <h3>Your saved To Do Lists:</h3><br>
                 <!--<button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="create">Create</button>-->
             </div>
         </header>
 
         <div class="top-container">
-            <table id="listsTable" data-paging="false" class="table">
+            <table id="listsTable" data-paging="false" data-filter-control="true"  class="table">
                 <thead  class="thead-dark">
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Description</th>
+                    <th scope="col" data-field="Description" data-filter-control="select">Description</th>
                     <th scope="col">Date</th>
                     <th scope="col">Tot.Items</th>
                     <th scope="col">Completed</th>
@@ -172,7 +174,9 @@
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function () {
-        $('#listsTable').DataTable();
+        $('#listsTable').DataTable({
+          responsive: true
+        });
     });
     </script>
    
