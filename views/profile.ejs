@@ -4,6 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>To Do List</title>
+<<<<<<< HEAD
+=======
+       
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
@@ -18,9 +22,13 @@
         <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet" type="text/css">
         
         <link href="css/style.css" rel="stylesheet" type="text/css">
+<<<<<<< HEAD
 
     <script>
 
+=======
+    <script>
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
       function ChangePassword()
       {
         var oldPass=$("#oldDescription").val();
@@ -45,23 +53,33 @@
                   }
               })
       }
+<<<<<<< HEAD
 
+=======
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
     </script>
     </head>
     
     <body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
       <div id="topbar"> 
         <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
         width="50px" alt="profile" style="margin-left: 25px;">
         <a id="title"><%= username %>'s To Do List</a>
       </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
+<<<<<<< HEAD
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
@@ -83,6 +101,29 @@
 
         <div class="top-container">    
 
+=======
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <!-- <a class="nav-item nav-link"  href="/edit">Edit <span class="sr-only">(current)</span></a> -->
+                <a class="nav-item nav-link active" href="/profile">Profile</a>
+                <a class="nav-item nav-link" href="/lists">My Lists</a>
+                <!-- <a class="nav-item nav-link" onclick="darkMode()">Dark/Light</a> -->
+                <form id="logout-btn" action="/logout?_method=DELETE" method="POST">
+                    <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent;cursor:pointer" onclick="return confirm('Logout form this account?');">Logout</button>
+                </form>
+                <!-- <a class="nav-item nav-link" onclick="darkMode()" style="cursor: pointer;">Dark/Light</a> -->
+              </div>
+            </div>
+          </nav>
+        <header>
+            <div class="top-container">
+                <h3>Your profile informations:</h3><br>
+                <!--<button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="create">Create</button>-->
+            </div>
+        </header>
+
+        <div class="top-container">        
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
           <table>
             <tr>
               <th>Username:</th>
@@ -92,12 +133,17 @@
             <tr>
               <th>Email:</th>
               <td class="tdprofile"><%= email %></td>
+<<<<<<< HEAD
+=======
+              <!-- <td><button class="btn btn-outline-secondary">Change Email</button></td> -->
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
               <td class="tdprofile">Email cannot be changed!</td>
             </tr>
             <tr>
               <th>Password:</th>
               <td class="tdprofile">*************</td>
               <td>
+<<<<<<< HEAD
                   <button type="button" data-toggle="modal" data-target="#passwordModal"  class="btn btn-outline-secondary" id="changePassword">Change Password</button> 
               </td>
             </tr>
@@ -106,6 +152,22 @@
         </div>
 
         <!-- CHANGE USERNAME POPUP -->
+=======
+                  <button type="button" data-toggle="modal" data-target="#passwordModal"  class="btn btn-outline-secondary" id="changePassword">Change Password</button>
+                 
+              </td>
+
+            </tr>
+            <!-- <tr>
+              <td>Log out from this account</td>
+              <td><form id="logout-btn" action="/logout?_method=DELETE" method="POST">
+                <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent;cursor:pointer">Logout</button>
+            </form></td>
+            </tr> -->
+          </table>
+        </div>
+
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
         <form class="credentials" action="/changeUser" method="POST">
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -134,7 +196,11 @@
           </div>
         </form>
 
+<<<<<<< HEAD
         <!-- CHANGE PASSWORD POPUP -->
+=======
+        <!-- CHANGE PASSWORD -->
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
         <form class="credentials" >
           <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -166,7 +232,12 @@
           </div>
         </form>
 
+<<<<<<< HEAD
       <footer>  
+=======
+        <footer>
+          
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
       </footer>
 
         

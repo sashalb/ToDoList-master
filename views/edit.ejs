@@ -20,6 +20,7 @@
         
         <link href="css/style.css" rel="stylesheet" type="text/css">
     </head>
+<<<<<<< HEAD
 
     <script>
         function DeleteItem(id)
@@ -52,23 +53,67 @@
                 window.location.href = "/edit";
               }
           })  
+=======
+    <script>
+      
+        function DeleteItem(id)
+        {
+            if (confirm("Are you sure?"))
+            {
+              $.ajax({
+                  type: 'post',
+                  url: '/deleteitem',
+                  data: { 
+                      'IdItem': id
+                  },
+                  success: function (data) {
+                    window.location.href = "/edit";
+                  }
+              })
+            }
+          
+        }
+        function ToggleStatus(id,status)
+        {
+           
+              $.ajax({
+                  type: 'post',
+                  url: '/togglestatus',
+                  data: { 
+                      'IdItem': id,
+                      'Status': status
+                  },
+                  success: function (data) {
+                    window.location.href = "/edit";
+                  }
+              })
+           
+          
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
         }
     </script>
 
     <body OnLoad="document.myform.description.focus();">
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
       <div id="topbar"> 
         <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
         width="50px" alt="profile" style="margin-left: 25px;">
         <a id="title"><%= username %>'s To Do List</a>
       </div>
+<<<<<<< HEAD
       
+=======
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
+<<<<<<< HEAD
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
@@ -82,6 +127,24 @@
 
         </nav>
 
+=======
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <!-- <a class="nav-item nav-link active" href="/edit">Edit <span class="sr-only">(current)</span></a> -->
+                <a class="nav-item nav-link" href="/profile">Profile</a>
+                <a class="nav-item nav-link" href="/lists">My Lists</a>
+                <!-- <a class="nav-item nav-link" onclick="darkMode()">Dark/Light</a> -->
+                <form id="logout-btn" action="/logout?_method=DELETE" method="POST">
+                    <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent;cursor:pointer" onclick="return confirm('Logout form this account?');">Logout</button>
+                </form>
+                <!-- <a class="nav-item nav-link" onclick="darkMode()" style="cursor: pointer;">Dark/Light</a> -->
+                <!-- <div>
+                <input type="checkbox"  id="darkmodeButton" onchange="darkMode()" checked data-toggle="toggle" data-size="xs" >
+            </div> -->
+              </div>
+            </div>
+          </nav>
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
         <header>
             <div class="top-container">
                 <h3>Current list: <%= descriptionList %></h3><br>
@@ -93,6 +156,7 @@
           <%
           if(listindex!=-1)
           { %>
+<<<<<<< HEAD
 
             <form  action="/insertitemlist" method="POST" name="myform">
               <div class="input-group">
@@ -107,6 +171,25 @@
 
           <%} 
           %>
+=======
+          <form  action="/insertitemlist" method="POST" name="myform">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Write something..." aria-describedby="button-addon2" id="description" name="description">
+                <input type="hidden" class="form-control"id="listId" name="listId" value=<%= listindex %>>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit" id="add-item">Add Item</button>
+                </div>
+                
+            </div>
+          </form>
+          <%} 
+          %>
+         <!--  <button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" style="margin-top: 3px;" id="save">Save List</button>
+
+          <div class="listholderstyle">
+              <ul class="list-group list-group-flush" id="list-holder"></ul>
+          </div> -->
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
 
             <table id="listsTable" data-paging="false" class="table">
               <thead  class="thead-dark">
@@ -115,14 +198,25 @@
                   <th scope="col" style="width: 80px;" ></th>
                   <th scope="col">Description</th>
                   <th scope="col">Date</th>
+<<<<<<< HEAD
                 </tr>
               </thead>
 
+=======
+             
+                </tr>
+              </thead>
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
               <%
               if(messages.allRowsItems!=null)
               {
                 for(let row of messages.allRowsItems ){%>
+<<<<<<< HEAD
                    
+=======
+                 
+                  
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
                   <tbody>
                       <tr  >
                           <td style="cursor: pointer;"><i onclick="DeleteItem(<%= row.Id %>)" class="fa fa-trash" aria-hidden="true"></i></td>
@@ -146,17 +240,29 @@
         </div>
 
       
+<<<<<<< HEAD
       </body>
 
 
       <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
       <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
+=======
+
+        
+      </body>
+      <script src="script/script.js"></script>
+      <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
       <script>
           $(document).ready(function () {
           $('#listsTable').DataTable();
       });
       </script>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
 </html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*PERSONAL STYLE SHEET*/
 
 
@@ -35,12 +36,40 @@ footer{
 
 .profile-image-pic{
     object-fit: cover;
+=======
+/* #navbarNavAltMarkup{
+    /* position: absolute!important; */
+    /* left: 20px!important; */
+    /* background-color:#f8f9fa; 
+} */
+
+#title{
+    margin-left: 5px;
+    color: #353535;
+    font-size: 25px;
+}
+
+#topbar{
+    background-color:#f8f9fa;
+    border-bottom-color: #D6CCC2;
+    border-bottom-style: solid;
+    width: 100%;
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
 }
 
 .navbar{
     height: 50px;
 }
 
+<<<<<<< HEAD
+=======
+/* .navbar-collapse{
+    background-color:#f8f9fa;
+    padding-left: 20px;
+    /* padding-bottom: 10px; 
+} */
+
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
 .navbar-nav{
     right: 20px;
 }
@@ -49,6 +78,18 @@ footer{
     padding-top: 15px;
     color: #353535;    
 }
+<<<<<<< HEAD
+=======
+body{
+    background-color: #D6CCC2;
+    color: #353535;        
+}
+
+h1{
+    text-align: center;
+    margin-top: 50px;
+}
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
 
 .form-box{
     margin-top: 20px;
@@ -75,7 +116,10 @@ footer{
 .col-sm-12, col-md-6{
     text-align: right!important;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
 .col-md-5{
     text-align: left!important;
 }
@@ -97,6 +141,13 @@ footer{
     padding-right: 100px;
 }
 
+<<<<<<< HEAD
+=======
+h3{
+    margin-top: 50px;
+}
+
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
 .input-group{
     margin-top: 8px;
     border-color: #353535;
@@ -119,6 +170,23 @@ footer{
     border-color: #353535;
 }
 
+<<<<<<< HEAD
+=======
+#create{
+    margin-top: 20px;
+    /* text-align: center; */
+    /* background-color: #2A9D8F; */
+}
+
+#create:hover{
+    cursor: pointer;
+}
+
+#save{
+    position: relative;
+}
+
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
 .list-group-item{
     cursor: pointer;
     background-color: #E9C46A;  
@@ -137,12 +205,32 @@ footer{
     margin-top: 20px;
     text-align: left;
 }
+<<<<<<< HEAD
+=======
+/*
+#logout-btn{
+    position: absolute;
+    left: 50%;
+}*/
+
+footer{
+    text-align: center;
+    margin-top: 100px;
+}
+
+td{
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
 
 .tdprofile{
     padding-left: 30px;
     padding-right: 30px;
 }
 
+<<<<<<< HEAD
 
 
 /*IDs*/
@@ -170,3 +258,9 @@ footer{
 #save{
     position: relative;
 }
+=======
+.darkmode{
+    background-color: #264653;  
+    color: #E9C46A;
+}
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43

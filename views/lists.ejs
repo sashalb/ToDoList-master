@@ -4,6 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>To Do List</title>
+<<<<<<< HEAD
+=======
+       
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
@@ -21,9 +25,15 @@
         <script type="text/javascript">
 
           function DeleteItem(id){
+<<<<<<< HEAD
               if (confirm("Delete this list?"))
               {
                   $.ajax({
+=======
+              if (confirm("Are you sure?"))
+              {
+                $.ajax({
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
                     type: 'post',
                     url: '/deletelists',
                     data: { 
@@ -39,6 +49,7 @@
           }
 
           function OpenList(id,Nome){
+<<<<<<< HEAD
               $.ajax({
                   type: 'post',
                   url: '/openlists',
@@ -50,14 +61,30 @@
                     window.location.href = "/edit";
                   }
               }) 
+=======
+                $.ajax({
+                    type: 'post',
+                    url: '/openlists',
+                    data: { 
+                        'IdItem': id,
+                        'Nome':Nome
+                    },
+                    success: function (data) {
+                      window.location.href = "/edit";
+                    }
+                }) 
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
           }
 
         </script>
     </head>
    
     <body>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
       <div id="topbar"> 
         <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
                   width="50px" alt="profile" style="margin-left: 25px;">
@@ -69,6 +96,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
+<<<<<<< HEAD
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
@@ -85,11 +113,33 @@
         <header>
             <div class="top-container">
                 <h3>Your saved To Do Lists:</h3><br>
+=======
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <!-- <a class="nav-item nav-link"  href="/edit">Edit <span class="sr-only">(current)</span></a> -->
+                <a class="nav-item nav-link" href="/profile">Profile</a>
+                <a class="nav-item nav-link active" href="/lists">My Lists</a>
+                <!-- <form id="logout-btn" action="/logout?_method=DELETE" method="POST"> -->
+                <form id="logout-btn" action="/logout?_method=DELETE" method="POST">
+                    <button class="nav-item nav-link" type="submit" style ="border-width:0px;background-color: transparent; cursor:pointer" onclick="return confirm('Logout form this account?');">Logout</button>
+                </form>
+                <!-- <a class="nav-item nav-link" onclick="darkMode()" style="cursor: pointer;">Dark/Light</a> -->
+              </div>
+            </div>
+          </nav>
+        <header>
+            <div class="top-container">
+                <h3>Your saved To Do Lists:</h3><br>
+                <!--<button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="create">Create</button>-->
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
             </div>
         </header>
 
         <div class="top-container">
+<<<<<<< HEAD
             
+=======
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
             <table id="listsTable" data-paging="false" data-filter-control="true"  class="table">
                 <thead  class="thead-dark">
                   <tr>
@@ -100,7 +150,10 @@
                     <th scope="col">Completed</th>
                   </tr>
                 </thead>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
                 <%
                 if(messages.allRows!=null)
                 {
@@ -119,6 +172,7 @@
                     <% }
                 } 
                 %>
+<<<<<<< HEAD
 
             </table>
 
@@ -126,6 +180,13 @@
         </div>
 
         <!-- NEW LIST POPUP -->
+=======
+            </table>
+            <button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-secondary" id="create">Create a New List</button>
+        </div>
+
+        
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
         <form class="credentials" action="/createlists" method="POST">
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -154,7 +215,12 @@
           </div>
           </form>
        
+<<<<<<< HEAD
         <footer>   
+=======
+          <footer>
+           
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
         </footer>
 
         
@@ -164,14 +230,28 @@
     <script src="script/script.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
+<<<<<<< HEAD
     <script>
 
+=======
+    <!-- <script>
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
         $(document).ready(function () {
         $('#listsTable').DataTable({
           responsive: true
               });
         });
 
+<<<<<<< HEAD
     </script>
+=======
+        function darkMode()
+        {
+        var element1 = document.body;
+        element1.classList.toggle("darkmode");
+        }
+
+    </script> -->
+>>>>>>> c74b2b9689d36f84521e5d743f16ae23bb2a0c43
    
 </html>
