@@ -1,0 +1,172 @@
+/*PERSONAL STYLE SHEET*/
+
+
+/*NORMAL ELEMENTS*/
+body{
+    background-color: #D6CCC2;
+    color: #353535;        
+}
+
+h1{
+    text-align: center;
+    margin-top: 50px;
+}
+
+h3{
+    margin-top: 50px;
+}
+
+td{
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+footer{
+    text-align: center;
+    margin-top: 100px;
+}
+
+
+/*CLASSES*/
+.btn-color{
+    color: #fff;
+}
+
+.profile-image-pic{
+    object-fit: cover;
+}
+
+.navbar{
+    height: 50px;
+}
+
+.navbar-nav{
+    right: 20px;
+}
+
+.nav-item{
+    padding-top: 15px;
+    color: #353535;    
+}
+
+.form-box{
+    margin-top: 20px;
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-color: #264653;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding-top: 10px;
+}
+
+.credentials{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.credentials-input{
+    margin-bottom: 10px;
+}
+
+.col-sm-12, col-md-6{
+    text-align: right!important;
+}
+
+.col-md-5{
+    text-align: left!important;
+}
+
+.top-text{
+    text-align: left;
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.top-text-center{
+    text-align: center;
+}
+
+.top-container{
+    margin-right: 20px;
+    margin-left: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.input-group{
+    margin-top: 8px;
+    border-color: #353535;
+}
+
+.form-control{
+    border-color: #353535;    
+}
+
+.btn{
+    background-color: #353535;     
+    color: white;
+    border-color: #353535;
+    text-align: center;
+}
+
+.btn:hover{
+    cursor: pointer;
+    background-color: #8a817c;
+    border-color: #353535;
+}
+
+.list-group-item{
+    cursor: pointer;
+    background-color: #E9C46A;  
+    color: #264653;            
+}
+
+.done{
+    text-decoration: line-through;
+    color: grey;
+}
+
+.listholderstyle{
+    margin-top: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.tdprofile{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+
+/*IDs*/
+#title{
+    margin-left: 5px;
+    color: #353535;
+    font-size: 25px;
+}
+
+#topbar{
+    background-color:#f8f9fa;
+    border-bottom-color: #D6CCC2;
+    border-bottom-style: solid;
+    width: 100%;
+}
+
+#create{
+    margin-top: 20px;
+}
+
+#create:hover{
+    cursor: pointer;
+}
+
+#save{
+    position: relative;
+}

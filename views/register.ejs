@@ -1,0 +1,59 @@
+<html>  
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Register Page</title>
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+       
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <style> a{text-decoration: none;} </style>
+    </head>
+
+    <body OnLoad="document.myform.name.focus();">
+        
+        <header>  
+        </header>
+
+
+        <div class="container">
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <h2 class="text-center text-dark mt-5">Registration Form</h2>
+                <div class="text-center mb-5 text-dark">The simplest To Do List of all time</div>
+                <div class="card my-5">
+        
+                  <form class="card-body cardbody-color p-lg-5"  action="/register" method="POST" name="myform">
+        
+                    <div class="text-center">
+                      <img src="https://cdn.pixabay.com/photo/2016/04/15/18/05/computer-1331579_960_720.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                        width="200px" alt="profile">
+                    </div>
+        
+                    <div class="mb-3">
+                      <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp"
+                        placeholder="Username" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                          placeholder="Email" required>
+                      </div>
+                    <div class="mb-3">
+                      <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                    </div>
+                    <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Register</button></div>
+                    <div id="emailHelp" class="form-text text-center mb-5 text-dark"> <a href="/login" class="text-dark fw-bold"> Back to login page</a>
+                    </div>
+                  </form>
+                </div>
+        
+              </div>
+            </div>
+          </div>
+
+
+    </body>
+
+</html>
